@@ -21,26 +21,31 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/stapel-client",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "index": "src/assets/index.html",
+            "main": "src/app/core/main.ts",
+            "polyfills": "src/app/shared/utils/polyfills.ts",
+            "tsConfig": "config/build/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.styl"
+              "src/app/shared/styles/global.styl"
             ],
-            "scripts": []
+            "scripts": [],
+            "fileReplacements": [
+              {
+                "replace": "config/application/env.ts",
+                "with": "config/application/.env.development.ts"
+              }
+            ]
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "config/application/env.ts",
+                  "with": "config/application/.env.production.ts"
                 }
               ],
               "optimization": true,
@@ -85,16 +90,15 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "config/test/test.ts",
+            "polyfills": "src/app/shared/utils/polyfills.ts",
+            "tsConfig": "config/build/tsconfig.spec.json",
+            "karmaConfig": "config/test/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.styl"
+              "src/app/shared/styles/global.styl"
             ],
             "scripts": []
           }
@@ -103,9 +107,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "config/build/tsconfig.app.json",
+              "config/build/tsconfig.spec.json",
+              "test/e2e/tsconfig.e2e.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -115,7 +119,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "test/e2e/protractor.conf.js",
             "devServerTarget": "stapel-client:serve"
           },
           "configurations": {

@@ -1,27 +1,72 @@
 # stapel-client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+Web frontend for the Stapel project
 
-## Development server
+This repository contains the Angular frontend code.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Development environment
 
-## Code scaffolding
+### Install packages
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You need to have have Node.js with the Node Package Manager (npm) installed to run this.
 
-## Build
+```shell
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Frontend server for development
 
-## Running unit tests
+Run the server on http://localhost:4200
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```shell
+npm start
+```
 
-## Running end-to-end tests
+### Build
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Build the application without hosting it on a local development server.
 
-## Further help
+```shell
+# For development
+npm run build
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# For production
+npm run build -- --prod
+```
+
+### Run tests
+
+```shell
+# Run all tests
+npm test
+
+# Run unit tests
+npm run test:unit
+
+# Run end-to-end tests
+npm run test:e2e
+```
+
+Unit tests make use of [Karma](https://karma-runner.github.io).
+
+End-to-end tests make use of [Protractor](http://www.protractortest.org/).
+
+## Angular
+
+[Angular CLI](https://angular.io/cli)
+
+> Project base generated from v11.2.0
+
+### Code scaffolding
+
+Generate a new component in its own folder: `.ts`, `.html`, `.styl`, `.spec.ts`
+
+```shell
+ng generate component my-component-name
+```
+
+Other supported templates
+
+```shell
+ng generate directive|pipe|service|class|guard|interface|enum|module
+```
